@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface QuizJpaRepository extends CrudRepository<Quiz, Long> {
+public interface CrudQuizRepository extends CrudRepository<Quiz, Long> {
 }

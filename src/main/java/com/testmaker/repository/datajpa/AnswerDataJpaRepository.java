@@ -4,32 +4,44 @@ import com.testmaker.model.Answer;
 import com.testmaker.repository.AnswerRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Repository
 public class AnswerDataJpaRepository implements AnswerRepository {
+
+    private final CrudAnswerRepository repository;
+
+    public AnswerDataJpaRepository(CrudAnswerRepository repository) {
+        this.repository = repository;
+    }
+
     @Override
     public Answer save(Answer answer) {
-        return null;
+
+        return repository.save(answer);
     }
 
     @Override
     public void delete(Long id) {
+        repository.deleteById(id);
 
     }
 
     @Override
-    public List<Answer> findAll() {
-        return null;
+    public Collection<Answer> findAll() {
+        Collection<Answer> result = new ArrayList<>();
+        repository.findAll().forEach(result::add);
+        return result;
     }
 
     @Override
-    public List<Answer> findAllByQuestionId(Long id) {
-        return null;
+    public Collection<Answer> findAllByQuestionId(Long id) {
+        return repository.findAnswersByQuestion(id);
     }
 
     @Override
     public Answer findById(Long id) {
-        return null;
+        return repository.findById(id).orElseThrow();
     }
 }
