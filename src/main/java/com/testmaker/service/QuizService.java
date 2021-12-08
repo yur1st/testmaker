@@ -4,7 +4,7 @@ import com.testmaker.model.Quiz;
 import com.testmaker.repository.QuizRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Collection;
 
 @Service
 public class QuizService {
@@ -15,7 +15,7 @@ public class QuizService {
         this.quizRepository = quizRepository;
     }
 
-    public List<Quiz> getAll() {
+    public Collection<Quiz> getAll() {
         return quizRepository.findAll();
     }
 

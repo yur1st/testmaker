@@ -1,6 +1,7 @@
 package com.testmaker.service;
 
-import com.testmaker.repository.AnswerRepository;
+import com.testmaker.model.Question;
+import com.testmaker.model.QuestionType;
 import com.testmaker.repository.QuestionRepository;
 import org.springframework.stereotype.Service;
 
@@ -8,12 +9,18 @@ import org.springframework.stereotype.Service;
 public class QuestionService {
 
     private final QuestionRepository questionRepository;
-    private final AnswerRepository answerRepository;
 
-    public QuestionService(QuestionRepository questionRepository, AnswerRepository answerRepository) {
+    public QuestionService(QuestionRepository questionRepository) {
         this.questionRepository = questionRepository;
-        this.answerRepository = answerRepository;
     }
 
-
+    public boolean checkAnswer(Long questionId, Long answerId) {
+        Question question = questionRepository.findById(questionId);
+        if (question.getType() == QuestionType.ONE) {
+            return question.getAnswers().stream()
+                    .filter(answer -> answer.getId() == answerId)
+                    .findFirst().orElseThrow().isRight();
+        }
+        return false;
+    }
 }
