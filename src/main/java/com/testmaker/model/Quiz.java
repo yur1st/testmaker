@@ -5,11 +5,8 @@ import java.util.List;
 
 @Entity(name = "Quiz")
 @Table(name = "quiz")
-public class Quiz {
+public class Quiz extends AbstractBaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
     private String name;
     private String description;
     private int questionsNumber;
@@ -18,5 +15,35 @@ public class Quiz {
     @JoinColumn(name = "quiz_id")
     private List<Question> questions;
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getQuestionsNumber() {
+        return questionsNumber;
+    }
+
+    public void setQuestionsNumber(int questionsNumber) {
+        this.questionsNumber = questionsNumber;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
 }

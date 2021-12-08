@@ -2,7 +2,7 @@ package com.testmaker.repository;
 
 import com.testmaker.model.Answer;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface AnswerRepository {
 
@@ -10,9 +10,9 @@ public interface AnswerRepository {
 
     void delete(Long id);
 
-    List<Answer> findAll();
+    Collection<Answer> findAll();
 
-    List<Answer> findAllByQuestionId(Long id);
+    Collection<Answer> findAllByQuestionId(Long id);
 
     Answer findById(Long id);
 

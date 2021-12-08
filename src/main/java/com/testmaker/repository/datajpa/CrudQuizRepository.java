@@ -1,9 +1,9 @@
 package com.testmaker.repository.datajpa;
 
-import com.testmaker.model.Question;
+import com.testmaker.model.Quiz;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface QuestionJpaRepository extends CrudRepository<Question, Long> {
+public interface CrudQuizRepository extends CrudRepository<Quiz, Long> {
 }

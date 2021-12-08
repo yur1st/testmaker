@@ -5,11 +5,8 @@ import java.util.List;
 
 @Entity(name = "Question")
 @Table(name = "question")
-public class Question {
+public class Question extends AbstractBaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
     private String body;
     private QuestionType type;
 
@@ -19,14 +16,6 @@ public class Question {
 
 
     public Question() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getBody() {
