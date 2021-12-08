@@ -1,5 +1,7 @@
 package com.testmaker.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +22,7 @@ public class AbstractBaseEntity {
         this.id = id;
     }
 
+    @JsonIgnore
     public boolean isNew() {
         return this.id == null;
     }

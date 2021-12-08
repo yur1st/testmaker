@@ -10,31 +10,33 @@ import java.util.List;
 @Repository
 public class QuizDataJpaRepository implements QuizRepository {
 
-    private final CrudQuizRepository repository;
+    private final CrudQuizRepository quizRepository;
 
-    public QuizDataJpaRepository(CrudQuizRepository repository) {
-        this.repository = repository;
+    public QuizDataJpaRepository(CrudQuizRepository quizRepository) {
+        this.quizRepository = quizRepository;
     }
 
     @Override
     public Quiz save(Quiz quiz) {
-        return repository.save(quiz);
+        return quizRepository.save(quiz);
     }
 
     @Override
     public void delete(Long id) {
-        repository.deleteById(id);
+        quizRepository.deleteById(id);
     }
 
     @Override
     public List<Quiz> findAll() {
         List<Quiz> result = new ArrayList<>();
-        repository.findAll().forEach(result::add);
+        quizRepository.findAll().forEach(result::add);
         return result;
     }
 
     @Override
     public Quiz findById(Long id) {
-        return repository.findById(id).get();
+        return quizRepository.findById(id).orElseThrow();
     }
+
+
 }

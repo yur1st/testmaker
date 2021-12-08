@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @Repository
 public class QuestionDataJpaRepository implements QuestionRepository {
@@ -36,13 +35,15 @@ public class QuestionDataJpaRepository implements QuestionRepository {
     }
 
     @Override
-    public List<Question> findAllByQuizId(Long id) {
-        return null;
+    public Collection<Question> findAllByQuizId(Long id) {
+
+        return repository.findQuestionsByQuiz(id);
     }
 
     @Override
     public Question findById(Long id) {
-        return null;
+
+        return repository.findById(id).orElseThrow();
     }
 
 }

@@ -1,31 +1,27 @@
 package com.testmaker.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity(name = "Answer")
 @Table(name = "answer")
+@Data
 public class Answer extends AbstractBaseEntity {
 
     private String body;
     private boolean isRight;
 
-    public Answer() {
-    }
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Question question;
 
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
+    @JsonIgnore
     public boolean isRight() {
         return isRight;
-    }
-
-    public void setRight(boolean right) {
-        isRight = right;
     }
 }
