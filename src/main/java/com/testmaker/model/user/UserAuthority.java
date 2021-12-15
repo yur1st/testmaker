@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user_authorities")
+@Table(name = "user_authority")
 @Data
 public class UserAuthority extends AbstractBaseEntity {
+
+    private String name;
 
 }

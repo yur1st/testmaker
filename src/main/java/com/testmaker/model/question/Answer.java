@@ -4,10 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.testmaker.model.AbstractBaseEntity;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity(name = "Answer")
 @Table(name = "answer")
@@ -15,6 +12,8 @@ import javax.persistence.Table;
 public class Answer extends AbstractBaseEntity {
 
     private String body;
+
+    @Column(name = "is_right")
     private boolean isRight;
 
     @ManyToOne(fetch = FetchType.EAGER)

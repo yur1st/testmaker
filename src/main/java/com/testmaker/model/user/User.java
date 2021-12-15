@@ -3,10 +3,7 @@ package com.testmaker.model.user;
 import com.testmaker.model.AbstractBaseEntity;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -16,10 +13,11 @@ public class User extends AbstractBaseEntity {
 
     private String name;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private UserStatistic statistic;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "user_id")
     private List<UserAuthority> authorities;
 
 }

@@ -14,6 +14,8 @@ import java.util.List;
 public class Question extends AbstractBaseEntity {
 
     private String body;
+
+    @Enumerated(value = EnumType.STRING)
     private QuestionType type;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)

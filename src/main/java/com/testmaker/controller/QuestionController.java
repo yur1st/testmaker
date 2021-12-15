@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/quiz/{quizId}/question")
+@RestController
+@RequestMapping("/quiz/{quizId}/question")
 public class QuestionController {
 
     @GetMapping

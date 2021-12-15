@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/quiz/{quizId}/proposal")
+@RestController
+@RequestMapping("/quiz/{quizId}/proposal")
 public class ProposalController {
 
     @GetMapping
