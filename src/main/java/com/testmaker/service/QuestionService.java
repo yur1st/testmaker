@@ -1,7 +1,7 @@
 package com.testmaker.service;
 
-import com.testmaker.model.Question;
-import com.testmaker.model.QuestionType;
+import com.testmaker.model.question.Question;
+import com.testmaker.model.question.QuestionType;
 import com.testmaker.repository.QuestionRepository;
 import org.springframework.stereotype.Service;
 

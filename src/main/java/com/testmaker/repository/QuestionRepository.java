@@ -1,6 +1,6 @@
 package com.testmaker.repository;
 
-import com.testmaker.model.Question;
+import com.testmaker.model.question.Question;
 
 import java.util.Collection;
 

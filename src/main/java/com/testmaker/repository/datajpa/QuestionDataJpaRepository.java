@@ -1,6 +1,6 @@
 package com.testmaker.repository.datajpa;
 
-import com.testmaker.model.Question;
+import com.testmaker.model.question.Question;
 import com.testmaker.repository.QuestionRepository;
 import org.springframework.stereotype.Repository;
 

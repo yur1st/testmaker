@@ -1,6 +1,7 @@
-package com.testmaker.model;
+package com.testmaker.model.question;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.testmaker.model.AbstractBaseEntity;
 import lombok.Data;
 
 import javax.persistence.Entity;

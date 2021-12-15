@@ -1,6 +1,6 @@
 package com.testmaker.repository.datajpa;
 
-import com.testmaker.model.Answer;
+import com.testmaker.model.question.Answer;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Collection;

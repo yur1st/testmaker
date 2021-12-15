@@ -1,5 +1,6 @@
 package com.testmaker.model;
 
+import com.testmaker.model.question.Question;
 import lombok.Data;
 
 import javax.persistence.CascadeType;
