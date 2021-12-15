@@ -1,6 +1,19 @@
 package com.testmaker.model;
 
-public class Proposal {
+import com.testmaker.model.question.Question;
 
-    //TODO implement proposals entity
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Proposal extends AbstractBaseEntity {
+
+    @OneToOne
+    private Question question;
+
+    @OneToOne
+    private Quiz quiz;
+
+    private int status;
+
 }

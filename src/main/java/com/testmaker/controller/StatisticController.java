@@ -1,6 +1,6 @@
 package com.testmaker.controller;
 
-import com.testmaker.model.Statistic;
+import com.testmaker.model.dto.StatisticDto;
 import com.testmaker.model.user.UserStatistic;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +11,7 @@ public class StatisticController {
 
 
     @GetMapping
-    public Statistic getStatistic() {
+    public StatisticDto getStatistic() {
         return null;
     }
 

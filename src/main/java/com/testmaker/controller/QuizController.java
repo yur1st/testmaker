@@ -1,8 +1,8 @@
 package com.testmaker.controller;
 
 import com.testmaker.model.Quiz;
-import com.testmaker.model.QuizAnswers;
-import com.testmaker.model.Result;
+import com.testmaker.model.dto.QuizAnswersDto;
+import com.testmaker.model.dto.ResultDto;
 import com.testmaker.service.QuizService;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +34,7 @@ public class QuizController {
     }
 
     @PostMapping("/{quizId}")
-    public Result checkAnswers(@PathVariable Long quizId, QuizAnswers answers) {
+    public ResultDto checkAnswers(@PathVariable Long quizId, QuizAnswersDto answers) {
         return null;
     }
 
