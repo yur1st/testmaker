@@ -2,6 +2,7 @@ package com.testmaker.controller;
 
 import com.testmaker.model.Quiz;
 import com.testmaker.model.dto.QuizAnswersDto;
+import com.testmaker.model.dto.QuizListDto;
 import com.testmaker.model.dto.ResultDto;
 import com.testmaker.service.QuizService;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class QuizController {
     }
 
     @GetMapping
-    public List<Quiz> getAllQuizzes() {
+    public List<QuizListDto> getAllQuizzes() {
         return new ArrayList<>(quizService.getAll());
     }
 
@@ -31,7 +32,8 @@ public class QuizController {
 
     @GetMapping("/{quizId}")
     public Quiz getQuiz(@PathVariable Long quizId) {
-        return null;
+
+        return quizService.getById(quizId);
     }
 
     @PostMapping("/{quizId}")

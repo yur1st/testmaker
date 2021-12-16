@@ -1,5 +1,6 @@
 package com.testmaker.model;
 
+import com.testmaker.model.proposal.Proposal;
 import com.testmaker.model.question.Question;
 import lombok.Data;
 
@@ -22,5 +23,6 @@ public class Quiz extends AbstractBaseEntity {
 
     @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Proposal> proposals;
+
 
 }

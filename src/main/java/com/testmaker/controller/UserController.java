@@ -1,7 +1,7 @@
 package com.testmaker.controller;
 
-import com.testmaker.model.Proposal;
 import com.testmaker.model.Quiz;
+import com.testmaker.model.proposal.Proposal;
 import com.testmaker.model.user.User;
 import org.springframework.web.bind.annotation.*;
 

@@ -16,4 +16,5 @@ public interface QuestionRepository {
 
     Question findById(Long id);
 
+    int getTotalQuestions(Long quizId);
 }

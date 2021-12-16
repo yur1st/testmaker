@@ -1,6 +1,7 @@
 package com.testmaker.model.user;
 
 import com.testmaker.model.AbstractBaseEntity;
+import com.testmaker.model.proposal.Proposal;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,5 +20,9 @@ public class User extends AbstractBaseEntity {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "user_id")
     private List<UserAuthority> authorities;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private List<Proposal> proposals;
 
 }

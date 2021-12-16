@@ -1,18 +1,19 @@
-package com.testmaker.repository.datajpa;
+package com.testmaker.repository.datajpa.implementation;
 
 import com.testmaker.model.Quiz;
 import com.testmaker.repository.QuizRepository;
+import com.testmaker.repository.datajpa.CrudQuizRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class QuizDataJpaRepository implements QuizRepository {
+public class QuizRepositoryImpl implements QuizRepository {
 
     private final CrudQuizRepository quizRepository;
 
-    public QuizDataJpaRepository(CrudQuizRepository quizRepository) {
+    public QuizRepositoryImpl(CrudQuizRepository quizRepository) {
         this.quizRepository = quizRepository;
     }
 

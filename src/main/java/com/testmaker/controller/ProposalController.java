@@ -1,6 +1,6 @@
 package com.testmaker.controller;
 
-import com.testmaker.model.Proposal;
+import com.testmaker.model.proposal.Proposal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

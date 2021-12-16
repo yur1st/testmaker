@@ -14,10 +14,19 @@ public class UserStatistic extends AbstractBaseEntity {
     @MapsId
     private User user;
 
+    @Column(name = "quizzes_completed")
     private int quizzesCompleted;
+
+    @Column(name = "total_answered_questions")
     private int totalAnsweredQuestions;
+
+    @Column(name = "right_answered_questions")
     private int rightAnsweredQuestions;
+
+    @Column(name = "proposed_questions")
     private int proposedQuestions;
+
+    @Column(name = "quizzes_created")
     private int quizzesCreated;
 
 }

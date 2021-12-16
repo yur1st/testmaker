@@ -11,4 +11,6 @@ public interface CrudQuestionRepository extends CrudRepository<Question, Long> {
 
     Collection<Question> findQuestionsByQuiz(Long quizId);
 
+    int countAllByQuiz(Long quizId);
+
 }

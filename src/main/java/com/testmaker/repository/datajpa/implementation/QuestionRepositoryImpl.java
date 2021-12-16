@@ -1,18 +1,19 @@
-package com.testmaker.repository.datajpa;
+package com.testmaker.repository.datajpa.implementation;
 
 import com.testmaker.model.question.Question;
 import com.testmaker.repository.QuestionRepository;
+import com.testmaker.repository.datajpa.CrudQuestionRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Repository
-public class QuestionDataJpaRepository implements QuestionRepository {
+public class QuestionRepositoryImpl implements QuestionRepository {
 
     private final CrudQuestionRepository repository;
 
-    public QuestionDataJpaRepository(CrudQuestionRepository repository) {
+    public QuestionRepositoryImpl(CrudQuestionRepository repository) {
         this.repository = repository;
     }
 
@@ -44,6 +45,11 @@ public class QuestionDataJpaRepository implements QuestionRepository {
     public Question findById(Long id) {
 
         return repository.findById(id).orElseThrow();
+    }
+
+    @Override
+    public int getTotalQuestions(Long quizId) {
+        return repository.countAllByQuiz(quizId);
     }
 
 }

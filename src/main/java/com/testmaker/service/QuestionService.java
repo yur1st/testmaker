@@ -23,4 +23,9 @@ public class QuestionService {
         }
         return false;
     }
+
+    public int getTotalQuestions(Long quizId) {
+        return questionRepository.getTotalQuestions(quizId);
+    }
+
 }
