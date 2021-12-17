@@ -2,6 +2,7 @@ package com.testmaker.service;
 
 import com.testmaker.mapping.QuizMapper;
 import com.testmaker.model.Quiz;
+import com.testmaker.model.dto.QuizDto;
 import com.testmaker.model.dto.QuizListDto;
 import com.testmaker.repository.QuizRepository;
 import org.springframework.stereotype.Service;
@@ -25,9 +26,22 @@ public class QuizService {
         return mapper.quizToQuizList(quizRepository.findAll());
     }
 
-    public Quiz getById(Long quizId) {
-        return quizRepository.findById(quizId);
+    public QuizDto getById(Long quizId) {
+        return mapper.quizToQuizDtoIndividual(quizRepository.findById(quizId));
     }
 
 
+    public QuizDto addQuiz(QuizDto quiz) {
+        Quiz result = quizRepository.save(mapper.quizDtoToQuizIndividual(quiz));
+        return mapper.quizToQuizDtoIndividual(result);
+
+    }
+
+    public QuizDto updateQuiz(Long quizId, QuizDto quizDto) {
+        //TODO: fix this slice
+        Quiz quiz = quizRepository.findById(quizId);
+        mapper.updateQuizFromQuizDto(quizDto, quiz);
+        Quiz result = quizRepository.save(quiz);
+        return mapper.quizToQuizDtoIndividual(result);
+    }
 }

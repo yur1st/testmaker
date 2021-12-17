@@ -2,6 +2,7 @@ package com.testmaker.controller;
 
 import com.testmaker.model.Quiz;
 import com.testmaker.model.dto.QuizAnswersDto;
+import com.testmaker.model.dto.QuizDto;
 import com.testmaker.model.dto.QuizListDto;
 import com.testmaker.model.dto.ResultDto;
 import com.testmaker.service.QuizService;
@@ -26,12 +27,13 @@ public class QuizController {
     }
 
     @PostMapping
-    public Quiz addQuiz(Quiz quiz) {
-        return null;
+    public QuizDto addQuiz(@RequestBody QuizDto quiz) {
+
+        return quizService.addQuiz(quiz);
     }
 
     @GetMapping("/{quizId}")
-    public Quiz getQuiz(@PathVariable Long quizId) {
+    public QuizDto getQuiz(@PathVariable Long quizId) {
 
         return quizService.getById(quizId);
     }
@@ -42,8 +44,8 @@ public class QuizController {
     }
 
     @PutMapping("/{quizId}")
-    public Quiz updateQuiz(@PathVariable Long quizId, Quiz quiz) {
-        return null;
+    public QuizDto updateQuiz(@PathVariable Long quizId, QuizDto quiz) {
+        return quizService.updateQuiz(quizId, quiz);
     }
 
     @DeleteMapping("/{quizId}")

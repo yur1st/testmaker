@@ -49,7 +49,7 @@ public class QuestionRepositoryImpl implements QuestionRepository {
 
     @Override
     public int getTotalQuestions(Long quizId) {
-        return repository.countAllByQuiz(quizId);
+        return repository.countAllByQuizId(quizId);
     }
 
 }
