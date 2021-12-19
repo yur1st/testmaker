@@ -38,10 +38,16 @@ public class QuizService {
     }
 
     public QuizDto updateQuiz(Long quizId, QuizDto quizDto) {
-        //TODO: fix this slice
         Quiz quiz = quizRepository.findById(quizId);
         mapper.updateQuizFromQuizDto(quizDto, quiz);
         Quiz result = quizRepository.save(quiz);
         return mapper.quizToQuizDtoIndividual(result);
+    }
+
+    public String deleteQuiz(Long quizId) {
+        Quiz quiz = quizRepository.findById(quizId);
+        quizRepository.delete(quizId);
+        String result = String.format("Quiz №%d: \"%s\" is succesfully deleted.", quiz.getId(), quiz.getName());
+        return result;
     }
 }

@@ -1,6 +1,5 @@
 package com.testmaker.controller;
 
-import com.testmaker.model.Quiz;
 import com.testmaker.model.dto.QuizAnswersDto;
 import com.testmaker.model.dto.QuizDto;
 import com.testmaker.model.dto.QuizListDto;
@@ -44,13 +43,15 @@ public class QuizController {
     }
 
     @PutMapping("/{quizId}")
-    public QuizDto updateQuiz(@PathVariable Long quizId, QuizDto quiz) {
-        return quizService.updateQuiz(quizId, quiz);
+    public QuizDto updateQuiz(@PathVariable Long quizId, @RequestBody QuizDto quizDto) {
+
+        return quizService.updateQuiz(quizId, quizDto);
     }
 
     @DeleteMapping("/{quizId}")
-    public Quiz deleteQuiz(@PathVariable Long quizId) {
-        return null;
+    public String deleteQuiz(@PathVariable Long quizId) {
+
+        return quizService.deleteQuiz(quizId);
     }
 
 
