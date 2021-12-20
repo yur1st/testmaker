@@ -12,8 +12,6 @@ public interface AnswerRepository {
 
     Collection<Answer> findAll();
 
-    Collection<Answer> findAllByQuestionId(Long id);
-
     Answer findById(Long id);
 
 }

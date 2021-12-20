@@ -35,20 +35,6 @@ public class ProposalRepositoryImpl implements ProposalRepository {
     }
 
     @Override
-    public Collection<Proposal> findAllByQuizId(Long id) {
-        Collection<Proposal> result = new ArrayList<>();
-        repository.findAllByQuiz(id).forEach(result::add);
-        return result;
-    }
-
-    @Override
-    public Collection<Proposal> findAllByUserId(Long id) {
-        Collection<Proposal> result = new ArrayList<>();
-        repository.findAllByUser(id).forEach(result::add);
-        return result;
-    }
-
-    @Override
     public Proposal findById(Long id) {
         return repository.findById(id).orElseThrow();
     }

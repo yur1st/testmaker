@@ -12,9 +12,5 @@ public interface ProposalRepository {
 
     Collection<Proposal> findAll();
 
-    Collection<Proposal> findAllByQuizId(Long id);
-
-    Collection<Proposal> findAllByUserId(Long id);
-
     Proposal findById(Long id);
 }

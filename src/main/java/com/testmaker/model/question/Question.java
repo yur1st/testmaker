@@ -1,7 +1,8 @@
 package com.testmaker.model.question;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.testmaker.model.AbstractBaseEntity;
 import com.testmaker.model.Quiz;
 import lombok.Data;
@@ -19,12 +20,14 @@ public class Question extends AbstractBaseEntity {
     @Enumerated(value = EnumType.STRING)
     private QuestionType type;
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "question_id")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+            property = "id")
     private Set<Answer> answers;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Quiz quiz;
 
 }

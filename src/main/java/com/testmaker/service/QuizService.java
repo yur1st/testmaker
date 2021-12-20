@@ -1,6 +1,7 @@
 package com.testmaker.service;
 
 import com.testmaker.mapping.QuizMapper;
+import com.testmaker.model.AbstractBaseEntity;
 import com.testmaker.model.Quiz;
 import com.testmaker.model.dto.QuizAnswersDto;
 import com.testmaker.model.dto.QuizDto;
@@ -67,13 +68,17 @@ public class QuizService {
 
 
     public ResultDto checkAnswers(Long quizId, QuizAnswersDto answers) {
-        ResultDto result = new ResultDto(quizRepository.findById(quizId));
+        Quiz quiz = quizRepository.findById(quizId);
+        ResultDto result = new ResultDto(quiz);
         if (quizId.equals(result.getQuiz().getId())) {
             Quiz rightQuiz = getQuizWithRightAnswersOnly(result.getQuiz());
             for (Question question : rightQuiz.getQuestions()) {
                 Long id = question.getId();
-                Set<Answer> rightAnswers = question.getAnswers();
-                Set<Answer> answeredSet = answers.getAnswers().get(id);
+                Set<Long> rightAnswers = question.getAnswers()
+                        .stream()
+                        .map(AbstractBaseEntity::getId)
+                        .collect(Collectors.toSet());
+                Set<Long> answeredSet = answers.getAnswers().get(id);
                 boolean isRight = answeredSet.equals(rightAnswers);
                 result.getResults().put(id, isRight);
             }

@@ -15,17 +15,24 @@ VALUES (30, 'Что говорит лиса?', 'ONE', 10),
 truncate table answer cascade;
 insert into answer (id, body, is_right, question_id)
 VALUES (60, 'Wakakaka', true, 30),
-       (70, 'Woof-woof', false, 30),
-       (80, 'Meow', false, 30),
-       (90, 'Kurikitakati', false, 30);
+       (61, 'Woof-woof', false, 30),
+       (62, 'Meow', false, 30),
+       (63, 'Kurikitakati', false, 30),
+       (70, 'Озоновый слой', true, 40),
+       (71, 'Потому что', false, 40),
+       (72, 'АПВС?', false, 40),
+       (81, 'Буду', true, 50),
+       (82, 'Барабан', false, 50),
+       (83, 'Не буду', true, 50);
 
 
 truncate table user_authority cascade;
 
-truncate table user_statistic, users cascade;
-insert into users (id, name)
-values (100, 'yurist'),
-       (101, 'lisa');
+truncate table users cascade;
+insert into users (id, name, proposed_questions, quizzes_completed, quizzes_created, right_answered_questions,
+                   total_answered_questions)
+values (100, 'yurist', 10, 15, 2, 100, 150),
+       (101, 'alisa', 15, 17, 5, 90, 130);
 
 truncate table proposal cascade;
 
@@ -33,15 +40,3 @@ insert into proposal (id, status, question_id, quiz_id, user_id)
 values (120, 'PENDING', 51, 20, 100),
        (130, 'PENDING', 52, 20, 100);
 
-insert into user_statistic (proposed_questions, quizzes_completed, quizzes_created, right_answered_questions,
-                            total_answered_questions, user_id)
-VALUES (10, 15, 2, 100, 150, 100),
-       (15, 17, 5, 90, 130, 101);
-
-update users
-set statistic_user_id = 100
-where users.id = 100;
-
-update users
-set statistic_user_id = 101
-where users.id = 101;

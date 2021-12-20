@@ -1,6 +1,6 @@
 package com.testmaker.model.dto;
 
-import com.testmaker.model.question.Answer;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.util.Map;
@@ -9,9 +9,11 @@ import java.util.Set;
 @Data
 public class QuizAnswersDto {
 
+    @JsonProperty("id")
     private Long quizId;
 
-    private Map<Long, Set<Answer>> answers;   //answerId , List of Answers
+    @JsonProperty("answers")
+    private Map<Long, Set<Long>> answers;   //questionId , List of AnswersId
 
 
 }

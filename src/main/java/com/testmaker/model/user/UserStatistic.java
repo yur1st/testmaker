@@ -1,32 +1,31 @@
 package com.testmaker.model.user;
 
-import com.testmaker.model.AbstractBaseEntity;
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.AttributeOverride;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
-@Entity
-@Table(name = "user_statistic")
+@Embeddable
 @Data
-public class UserStatistic extends AbstractBaseEntity {
+public class UserStatistic {
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
-    private User user;
-
-    @Column(name = "quizzes_completed")
+    @AttributeOverride(name = "quizzesCompleted", column = @Column(name = "quizzes_completed"))
     private int quizzesCompleted;
 
-    @Column(name = "total_answered_questions")
+    @AttributeOverride(name = "totalAnsweredQuestions", column = @Column(name = "total_answered_questions"))
     private int totalAnsweredQuestions;
 
-    @Column(name = "right_answered_questions")
+    @AttributeOverride(name = "rightAnsweredQuestions", column = @Column(name = "right_answered_questions"))
     private int rightAnsweredQuestions;
 
-    @Column(name = "proposed_questions")
+    @AttributeOverride(name = "proposedQuestions", column = @Column(name = "proposed_questions"))
     private int proposedQuestions;
 
-    @Column(name = "quizzes_created")
+    @AttributeOverride(name = "quizzesCreated", column = @Column(name = "quizzes_created"))
     private int quizzesCreated;
 
 }
+
+
+

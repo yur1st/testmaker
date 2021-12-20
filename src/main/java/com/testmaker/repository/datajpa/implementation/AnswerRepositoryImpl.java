@@ -37,11 +37,6 @@ public class AnswerRepositoryImpl implements AnswerRepository {
     }
 
     @Override
-    public Collection<Answer> findAllByQuestionId(Long id) {
-        return repository.findAnswersByQuestion(id);
-    }
-
-    @Override
     public Answer findById(Long id) {
         return repository.findById(id).orElseThrow();
     }
