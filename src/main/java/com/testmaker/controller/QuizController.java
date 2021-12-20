@@ -38,8 +38,9 @@ public class QuizController {
     }
 
     @PostMapping("/{quizId}")
-    public ResultDto checkAnswers(@PathVariable Long quizId, QuizAnswersDto answers) {
-        return null;
+    public ResultDto checkAnswers(@PathVariable Long quizId, @RequestBody QuizAnswersDto answers) {
+
+        return quizService.checkAnswers(quizId, answers);
     }
 
     @PutMapping("/{quizId}")

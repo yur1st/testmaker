@@ -2,12 +2,18 @@ package com.testmaker.service;
 
 import com.testmaker.mapping.QuizMapper;
 import com.testmaker.model.Quiz;
+import com.testmaker.model.dto.QuizAnswersDto;
 import com.testmaker.model.dto.QuizDto;
 import com.testmaker.model.dto.QuizListDto;
+import com.testmaker.model.dto.ResultDto;
+import com.testmaker.model.question.Answer;
+import com.testmaker.model.question.Question;
 import com.testmaker.repository.QuizRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class QuizService {
@@ -47,7 +53,35 @@ public class QuizService {
     public String deleteQuiz(Long quizId) {
         Quiz quiz = quizRepository.findById(quizId);
         quizRepository.delete(quizId);
-        String result = String.format("Quiz №%d: \"%s\" is succesfully deleted.", quiz.getId(), quiz.getName());
-        return result;
+        return String.format("Quiz №%d: \"%s\" is successfully deleted.", quiz.getId(), quiz.getName());
+    }
+
+    public Quiz getQuizWithRightAnswersOnly(Quiz quiz) {
+        for (Question question : quiz.getQuestions()) {
+            question.setAnswers(question.getAnswers().stream()
+                    .filter(Answer::isRight)
+                    .collect(Collectors.toSet()));
+        }
+        return quiz;
+    }
+
+
+    public ResultDto checkAnswers(Long quizId, QuizAnswersDto answers) {
+        ResultDto result = new ResultDto(quizRepository.findById(quizId));
+        if (quizId.equals(result.getQuiz().getId())) {
+            Quiz rightQuiz = getQuizWithRightAnswersOnly(result.getQuiz());
+            for (Question question : rightQuiz.getQuestions()) {
+                Long id = question.getId();
+                Set<Answer> rightAnswers = question.getAnswers();
+                Set<Answer> answeredSet = answers.getAnswers().get(id);
+                boolean isRight = answeredSet.equals(rightAnswers);
+                result.getResults().put(id, isRight);
+            }
+            return result;
+        } else {
+            System.out.println("Wrong quizId in path");
+        }
+        return null;
+
     }
 }

@@ -28,4 +28,5 @@ public class QuestionService {
         return questionRepository.getTotalQuestions(quizId);
     }
 
+
 }

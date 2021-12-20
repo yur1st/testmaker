@@ -1,5 +1,6 @@
 package com.testmaker.model.question;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.testmaker.model.AbstractBaseEntity;
 import lombok.Data;
@@ -17,7 +18,7 @@ public class Answer extends AbstractBaseEntity {
     private boolean isRight;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnore
+    @JsonBackReference
     private Question question;
 
     @JsonIgnore

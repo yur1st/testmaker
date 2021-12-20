@@ -1,12 +1,13 @@
 package com.testmaker.model.question;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.testmaker.model.AbstractBaseEntity;
 import com.testmaker.model.Quiz;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity(name = "Question")
 @Table(name = "question")
@@ -19,10 +20,11 @@ public class Question extends AbstractBaseEntity {
     private QuestionType type;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Answer> answers;
+    @JsonManagedReference
+    private Set<Answer> answers;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
+    @JsonBackReference
     private Quiz quiz;
 
 }
