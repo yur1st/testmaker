@@ -1,17 +1,21 @@
 package com.testmaker.model.proposal;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.testmaker.model.AbstractBaseEntity;
 import com.testmaker.model.question.Question;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "proposal")
+@Getter
+@Setter
 public class Proposal extends AbstractBaseEntity {
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
     private Question question;
 
     @Enumerated(value = EnumType.STRING)

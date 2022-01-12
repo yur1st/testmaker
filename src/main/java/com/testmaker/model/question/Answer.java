@@ -1,8 +1,9 @@
 package com.testmaker.model.question;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.testmaker.model.AbstractBaseEntity;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +11,8 @@ import javax.persistence.Table;
 
 @Entity(name = "Answer")
 @Table(name = "answer")
-@Data
+@Getter
+@Setter
 public class Answer extends AbstractBaseEntity {
 
     private String body;
@@ -18,7 +20,7 @@ public class Answer extends AbstractBaseEntity {
     @Column(name = "is_right")
     private boolean isRight;
 
-    @JsonBackReference
+    @JsonIgnore
     public boolean isRight() {
         return isRight;
     }

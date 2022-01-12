@@ -3,14 +3,16 @@ package com.testmaker.model.user;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.testmaker.model.AbstractBaseEntity;
 import com.testmaker.model.proposal.Proposal;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
-@Data
+@Getter
+@Setter
 public class User extends AbstractBaseEntity {
 
     private String name;

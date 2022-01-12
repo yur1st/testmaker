@@ -1,18 +1,19 @@
 package com.testmaker.model.question;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.testmaker.model.AbstractBaseEntity;
 import com.testmaker.model.Quiz;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity(name = "Question")
 @Table(name = "question")
-@Data
+@Getter
+@Setter
 public class Question extends AbstractBaseEntity {
 
     private String body;
@@ -22,12 +23,11 @@ public class Question extends AbstractBaseEntity {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "question_id")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
-            property = "id")
+    @JsonManagedReference
     private Set<Answer> answers;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
+    @JsonBackReference
     private Quiz quiz;
 
 }
