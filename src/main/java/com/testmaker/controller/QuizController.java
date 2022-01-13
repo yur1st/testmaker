@@ -1,10 +1,12 @@
 package com.testmaker.controller;
 
+import ch.qos.logback.classic.Logger;
 import com.testmaker.model.dto.QuizAnswersDto;
 import com.testmaker.model.dto.QuizDto;
 import com.testmaker.model.dto.QuizListDto;
 import com.testmaker.model.dto.ResultDto;
 import com.testmaker.service.QuizService;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -15,6 +17,8 @@ import java.util.List;
 public class QuizController {
 
     private final QuizService quizService;
+
+    private Logger logger = (Logger) LoggerFactory.getLogger(QuizController.class);
 
     public QuizController(QuizService quizService) {
         this.quizService = quizService;
@@ -45,7 +49,7 @@ public class QuizController {
 
     @PutMapping("/{quizId}")
     public QuizDto updateQuiz(@PathVariable Long quizId, @RequestBody QuizDto quizDto) {
-
+        logger.debug("putting quizDto");
         return quizService.updateQuiz(quizId, quizDto);
     }
 

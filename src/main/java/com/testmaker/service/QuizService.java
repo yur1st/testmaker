@@ -13,6 +13,8 @@ import com.testmaker.repository.QuizRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -57,13 +59,15 @@ public class QuizService {
         return String.format("Quiz №%d: \"%s\" is successfully deleted.", quiz.getId(), quiz.getName());
     }
 
-    public Quiz getQuizWithRightAnswersOnly(Quiz quiz) {
+    public Map<Long, Set<Long>> getQuizWithRightAnswersOnly(Quiz quiz) {
+        Map<Long, Set<Long>> result = new LinkedHashMap<>();
         for (Question question : quiz.getQuestions()) {
-            question.setAnswers(question.getAnswers().stream()
+            result.put(question.getId(), question.getAnswers().stream()
                     .filter(Answer::isRight)
+                    .map(AbstractBaseEntity::getId)
                     .collect(Collectors.toSet()));
         }
-        return quiz;
+        return result;
     }
 
 
@@ -71,15 +75,12 @@ public class QuizService {
         Quiz quiz = quizRepository.findById(quizId);
         ResultDto result = new ResultDto(quiz);
         if (quizId.equals(result.getQuiz().getId())) {
-            Quiz rightQuiz = getQuizWithRightAnswersOnly(result.getQuiz());
-            for (Question question : rightQuiz.getQuestions()) {
-                Long id = question.getId();
-                Set<Long> rightAnswers = question.getAnswers()
-                        .stream()
-                        .map(AbstractBaseEntity::getId)
-                        .collect(Collectors.toSet());
+            Map<Long, Set<Long>> answersMap = getQuizWithRightAnswersOnly(result.getQuiz());
+            for (Map.Entry<Long, Set<Long>> entry : answersMap.entrySet()) {
+                Long id = entry.getKey();
+                Set<Long> rightAnswers = entry.getValue();
                 Set<Long> answeredSet = answers.getAnswers().get(id);
-                boolean isRight = answeredSet.equals(rightAnswers);
+                boolean isRight = answeredSet.size() == rightAnswers.size() && rightAnswers.containsAll(answeredSet);
                 result.getResults().put(id, isRight);
             }
             return result;

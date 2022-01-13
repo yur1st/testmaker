@@ -28,7 +28,6 @@ public class Quiz extends AbstractBaseEntity {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "quiz_id")
-    @JsonManagedReference
     private List<Proposal> proposals;
 
 }
