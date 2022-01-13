@@ -1,8 +1,8 @@
 package com.testmaker.mapping;
 
 import com.testmaker.model.Quiz;
-import com.testmaker.model.dto.QuizDto;
-import com.testmaker.model.dto.QuizListDto;
+import com.testmaker.model.dto.quiz.QuizDto;
+import com.testmaker.model.dto.quiz.QuizListDto;
 import com.testmaker.service.QuestionService;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

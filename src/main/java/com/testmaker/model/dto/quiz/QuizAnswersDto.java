@@ -1,4 +1,4 @@
-package com.testmaker.model.dto;
+package com.testmaker.model.dto.quiz;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

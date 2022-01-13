@@ -1,4 +1,4 @@
-package com.testmaker.model.dto;
+package com.testmaker.model.dto.quiz;
 
 import com.testmaker.model.user.UserStatistic;
 import lombok.Data;

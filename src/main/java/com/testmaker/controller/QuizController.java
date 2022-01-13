@@ -1,10 +1,10 @@
 package com.testmaker.controller;
 
 import ch.qos.logback.classic.Logger;
-import com.testmaker.model.dto.QuizAnswersDto;
-import com.testmaker.model.dto.QuizDto;
-import com.testmaker.model.dto.QuizListDto;
-import com.testmaker.model.dto.ResultDto;
+import com.testmaker.model.dto.quiz.QuizAnswersDto;
+import com.testmaker.model.dto.quiz.QuizDto;
+import com.testmaker.model.dto.quiz.QuizListDto;
+import com.testmaker.model.dto.quiz.ResultDto;
 import com.testmaker.service.QuizService;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;

@@ -1,37 +1,49 @@
 package com.testmaker.controller;
 
-import com.testmaker.model.question.Question;
+import com.testmaker.model.dto.question.QuestionDto;
+import com.testmaker.service.QuestionService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/quiz/{quizId}/question")
 public class QuestionController {
 
+    private final QuestionService service;
+
+    public QuestionController(QuestionService service) {
+        this.service = service;
+    }
+
     @GetMapping
-    public List<Question> getQuestions(@PathVariable Long quizId) {
-        return null;
+    public Collection<QuestionDto> getQuestions(@PathVariable Long quizId) {
+
+        return service.getQuestions(quizId);
     }
 
     @PostMapping
-    public Question addQuestion(@PathVariable Long quizId, Question question) {
-        return null;
+    public QuestionDto addQuestion(@PathVariable Long quizId, @RequestBody QuestionDto questionDto) {
+
+        return service.addQuestion(quizId, questionDto);
     }
 
     @PutMapping("/{questionId}")
-    public Question updateQuestion(@PathVariable Long questionId, Question question) {
-        return null;
+    public QuestionDto updateQuestion(@PathVariable Long quizId, @PathVariable Long questionId, @RequestBody QuestionDto questionDto) {
+
+        return service.updateQuestion(quizId, questionId, questionDto);
     }
 
     @DeleteMapping("/{questionId}")
-    public Question deleteQuestion(@PathVariable Long questionId) {
-        return null;
+    public String deleteQuestion(@PathVariable Long questionId) {
+
+        return service.deleteQuestion(questionId);
     }
 
-    @GetMapping("/{quiestionId}")
-    public Question getQuestion(@PathVariable Long questionId) {
-        return null;
+    @GetMapping("/{questionId}")
+    public QuestionDto getQuestion(@PathVariable Long questionId) {
+
+        return service.getQuestion(questionId);
     }
 
 }
