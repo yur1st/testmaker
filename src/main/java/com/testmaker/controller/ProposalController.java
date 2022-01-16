@@ -1,26 +1,35 @@
 package com.testmaker.controller;
 
+import com.testmaker.model.dto.ProposalDto;
 import com.testmaker.model.proposal.Proposal;
+import com.testmaker.service.ProposalService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/quiz/{quizId}/proposal")
 public class ProposalController {
 
+    private final ProposalService service;
+
+    public ProposalController(ProposalService service) {
+        this.service = service;
+    }
+
     @GetMapping
-    public List<Proposal> getProposals(@PathVariable Long quizId) {
-        return null;
+    public Collection<ProposalDto> getProposals(@PathVariable Long quizId) {
+
+        return service.getProposals(quizId);
     }
 
     @PostMapping
-    public Proposal addProposal(@PathVariable Long quizId, Proposal proposal) {
+    public ProposalDto addProposal(@PathVariable Long quizId, ProposalDto proposalDto) {
         return null;
     }
 
     @GetMapping("/{proposalId}")
-    public Proposal getProposal(@PathVariable Long proposalId) {
+    public ProposalDto getProposal(@PathVariable Long proposalId) {
         return null;
     }
 
@@ -30,17 +39,17 @@ public class ProposalController {
     }
 
     @PutMapping("/{proposalId}")
-    public Proposal updateProposal(@PathVariable Long proposalId, Proposal proposal) {
+    public ProposalDto updateProposal(@PathVariable Long proposalId, ProposalDto proposalDto) {
         return null;
     }
 
     @PatchMapping("/{proposalId}/accept")
-    public Proposal acceptProposal(@PathVariable Long proposalId) {
+    public ProposalDto acceptProposal(@PathVariable Long proposalId) {
         return null;
     }
 
     @PatchMapping("/{proposalId}/decline")
-    public Proposal declineProposal(@PathVariable Long proposalId) {
+    public ProposalDto declineProposal(@PathVariable Long proposalId) {
         return null;
     }
 

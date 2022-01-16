@@ -38,4 +38,11 @@ public class ProposalRepositoryImpl implements ProposalRepository {
     public Proposal findById(Long id) {
         return repository.findById(id).orElseThrow();
     }
+
+    @Override
+    public Collection<Proposal> findAllByQuizId(Long quizId) {
+        return repository.findAllByQuizId(quizId);
+    }
+
+
 }

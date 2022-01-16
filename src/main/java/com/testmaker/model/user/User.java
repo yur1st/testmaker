@@ -1,6 +1,6 @@
 package com.testmaker.model.user;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.testmaker.model.AbstractBaseEntity;
 import com.testmaker.model.proposal.Proposal;
 import lombok.Getter;
@@ -22,12 +22,12 @@ public class User extends AbstractBaseEntity {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "user_id")
-    @JsonBackReference
+    @JsonManagedReference
     private List<UserAuthority> authorities;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    @JsonBackReference
+    @JsonManagedReference
     private List<Proposal> proposals;
 
 }

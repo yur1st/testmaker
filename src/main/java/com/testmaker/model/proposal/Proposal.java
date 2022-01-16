@@ -1,7 +1,10 @@
 package com.testmaker.model.proposal;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.testmaker.model.AbstractBaseEntity;
+import com.testmaker.model.Quiz;
 import com.testmaker.model.question.Question;
+import com.testmaker.model.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,5 +21,13 @@ public class Proposal extends AbstractBaseEntity {
 
     @Enumerated(value = EnumType.STRING)
     private ProposalStatus status;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Quiz quiz;
 
 }

@@ -37,6 +37,6 @@ values (100, 'yurist', 10, 15, 2, 100, 150),
 truncate table proposal cascade;
 
 insert into proposal (id, status, question_id, quiz_id, user_id)
-values (120, 'PENDING', 51, 20, 100),
-       (130, 'PENDING', 52, 20, 100);
+values (120, 'PENDING', 51, 10, 100),
+       (130, 'PENDING', 52, 10, 100);
 
