@@ -21,6 +21,6 @@ public class ProposalService {
     }
 
     public Collection<ProposalDto> getProposals(Long quizId) {
-        return mapper.proposalListToDto(repository.findAllByQuizId(quizId));
+        return repository.findAllProposalsByQuizId(quizId);
     }
 }

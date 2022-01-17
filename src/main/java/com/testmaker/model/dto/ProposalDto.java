@@ -1,13 +1,12 @@
 package com.testmaker.model.dto;
 
 import com.testmaker.model.proposal.ProposalStatus;
-import com.testmaker.model.question.Question;
 import lombok.Data;
 
 @Data
 public class ProposalDto {
 
-    private Question question;
+    private Long questionId;
     private ProposalStatus status;
 
     private Long userId;
@@ -15,4 +14,7 @@ public class ProposalDto {
 
     private Long quizId;
     private String quizName;
+
+    public ProposalDto(Long questionId, String status, Long userId, String userName, Long quizId, String quizName) {
+    }
 }

@@ -1,5 +1,6 @@
 package com.testmaker.repository.datajpa.implementation;
 
+import com.testmaker.model.dto.ProposalDto;
 import com.testmaker.model.proposal.Proposal;
 import com.testmaker.repository.ProposalRepository;
 import com.testmaker.repository.datajpa.CrudProposalRepository;
@@ -40,7 +41,8 @@ public class ProposalRepositoryImpl implements ProposalRepository {
     }
 
     @Override
-    public Collection<Proposal> findAllByQuizId(Long quizId) {
+    public Collection<ProposalDto> findAllProposalsByQuizId(Long quizId) {
+
         return repository.findAllByQuizId(quizId);
     }
 
