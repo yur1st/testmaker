@@ -6,6 +6,8 @@ import lombok.Data;
 @Data
 public class ProposalDto {
 
+    private Long proposalId;
+
     private Long questionId;
     private ProposalStatus status;
 
@@ -16,5 +18,9 @@ public class ProposalDto {
     private String quizName;
 
     public ProposalDto(Long questionId, String status, Long userId, String userName, Long quizId, String quizName) {
+    }
+
+    public ProposalDto() {
+
     }
 }

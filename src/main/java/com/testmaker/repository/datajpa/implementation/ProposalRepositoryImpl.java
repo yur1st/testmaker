@@ -1,11 +1,11 @@
 package com.testmaker.repository.datajpa.implementation;
 
-import com.testmaker.model.dto.ProposalDto;
 import com.testmaker.model.proposal.Proposal;
 import com.testmaker.repository.ProposalRepository;
 import com.testmaker.repository.datajpa.CrudProposalRepository;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.Tuple;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -41,7 +41,7 @@ public class ProposalRepositoryImpl implements ProposalRepository {
     }
 
     @Override
-    public Collection<ProposalDto> findAllProposalsByQuizId(Long quizId) {
+    public Collection<Tuple> findAllProposalsByQuizId(Long quizId) {
 
         return repository.findAllByQuizId(quizId);
     }

@@ -1,7 +1,6 @@
 package com.testmaker.controller;
 
 import com.testmaker.model.dto.ProposalDto;
-import com.testmaker.model.proposal.Proposal;
 import com.testmaker.service.ProposalService;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +18,6 @@ public class ProposalController {
 
     @GetMapping
     public Collection<ProposalDto> getProposals(@PathVariable Long quizId) {
-
         return service.getProposals(quizId);
     }
 
@@ -30,12 +28,12 @@ public class ProposalController {
 
     @GetMapping("/{proposalId}")
     public ProposalDto getProposal(@PathVariable Long proposalId) {
-        return null;
+        return service.getProposal(proposalId);
     }
 
     @DeleteMapping("/{proposalId}")
-    public Proposal deleteProposal(@PathVariable Long proposalId) {
-        return null;
+    public String deleteProposal(@PathVariable Long proposalId) {
+        return service.deleteProposal(proposalId);
     }
 
     @PutMapping("/{proposalId}")
